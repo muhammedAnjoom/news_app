@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/style/size_config.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../style/app_style.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -44,27 +44,27 @@ class HomeScreen extends StatelessWidget {
                   Text(
                     "Monday,3 October",
                     style: kPoppinsRegular.copyWith(
-                        fontSize: SizeConfig.blockSizeHorizontal! * 3,
+                        fontSize: SizeConfig.blockSizeHorizontal! * 3.3,
                         color: KGrey),
                   )
                 ],
               )
             ],
           ),
-          const SizedBox(
-            height: 30,
-          ),
+          kHeight30,
           Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(kBorderRadius),
-                color: kwhite,
-                boxShadow: [
-                  BoxShadow(
-                      color: KDarkBlue.withOpacity(0.051),
-                      offset: const Offset(0.0, 3),
-                      blurRadius: 24,
-                      spreadRadius: 0)
-                ]),
+              borderRadius: BorderRadius.circular(kBorderRadius),
+              color: kwhite,
+              boxShadow: [
+                BoxShadow(
+                  color: KDarkBlue.withOpacity(0.051),
+                  offset: const Offset(0.0, 3),
+                  blurRadius: 24,
+                  spreadRadius: 0,
+                )
+              ],
+            ),
             child: Row(
               children: [
                 Expanded(
@@ -88,8 +88,55 @@ class HomeScreen extends StatelessWidget {
                           fontSize: SizeConfig.blockSizeHorizontal! * 3),
                     ),
                   ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: KBlue,
+                    borderRadius: BorderRadius.circular(kBorderRadius),
+                  ),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: SvgPicture.asset(
+                      'assets/icons/search.svg',
+                      color: kwhite,
+                    ),
+                  ),
                 )
               ],
+            ),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          SizedBox(
+            height: 14,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(right: 30),
+                  child: Text(
+                    '#health',
+                    style: kPoppinsMedium.copyWith(
+                        color: KGrey,
+                        fontSize: SizeConfig.blockSizeHorizontal! * 3),
+                  ),
+                );
+              },
+            ),
+          ),
+          kHeight30,
+          SizedBox(
+            height: 304,
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: 10,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context,index){
+                return Container();
+              },
             ),
           )
         ],

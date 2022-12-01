@@ -13,6 +13,8 @@ const Color KDarkBlue = Color(0xff19202d);
 
 const double kBorderRadius = 16;
 
+const kHeight30 = SizedBox(height: 30,);
+
 final kBorder = OutlineInputBorder(
   borderSide: BorderSide.none,
   borderRadius: BorderRadius.circular(kBorderRadius)
