@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../style/app_style.dart';
 
 class CustomBottomBar extends StatefulWidget {
-  CustomBottomBar({
+  const CustomBottomBar({
     super.key,
   });
 

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:news_app/style/app_style.dart';
 
 
+import 'view/detalis/detalis_screen.dart';
 import 'view/home/home_screen.dart';
 import 'view/widgets/custom_bottom_bar.dart';
 
@@ -21,9 +22,9 @@ class MyApp extends StatelessWidget {
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
+      home:const Scaffold(
         backgroundColor: kLighterWhite,
-        body: const HomeScreen(),
+        body:  NewsDetails(),
         bottomNavigationBar: CustomBottomBar(),
       ),
       theme: ThemeData(primaryColor: Colors.blue),
