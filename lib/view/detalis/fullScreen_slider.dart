@@ -46,6 +46,7 @@ class _FullScreenSliderState extends State<FullScreenSlider> {
               )
               .toList(),
         ),
+        
       ],
     );
   }
