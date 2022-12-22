@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:news_app/style/size_config.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../controller/news_controller.dart';
 import '../../style/app_style.dart';
 import 'news_card.dart';
 import 'short_news.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
+  HomeScreen({Key? key}) : super(key: key);
+final NewsController newsController = Get.put(NewsController());
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -132,14 +134,14 @@ class HomeScreen extends StatelessWidget {
           kHeight30,
           SizedBox(
             height: 304,
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: 10,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return const NewsCard();
-              },
-            ),
+            child: Obx(() => ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return NewsCard();
+                  },
+                )),
           ),
           kHeight30,
           Row(
@@ -169,7 +171,7 @@ class HomeScreen extends StatelessWidget {
               itemCount: 10,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return const  ShortNews();
+                return const ShortNews();
               },
             ),
           )
@@ -178,5 +180,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
