@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/style/app_style.dart';
 import 'package:news_app/style/size_config.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_app/view/detalis/topButtons.dart';
 
-import 'fullScreen_slider.dart';
-
-final List<String> imageList = [
-  'https://images.unsplash.com/photo-1613405550625-e11c7d2221e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80',
-  'https://images.unsplash.com/photo-1603995228115-df0e33ee5514?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-  'https://images.unsplash.com/photo-1657100027726-337934359676?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=729&q=80'
-];
-
 class NewsDetails extends StatelessWidget {
-  const NewsDetails({Key? key}) : super(key: key);
+  const NewsDetails(
+      {Key? key,
+      this.imgUrl,
+      this.title,
+      this.author,
+      this.content,
+      this.month,
+      this.day})
+      : super(key: key);
+
+  final String? imgUrl;
+  final String? title;
+  final String? author;
+  final String? content;
+  final String? month;
+  final String? day;
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +30,16 @@ class NewsDetails extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: SizeConfig.blockSizeVertical! * 90,
+            height: SizeConfig.blockSizeVertical! * 100,
             child: Stack(
               children: [
-                const FullScreenSlider(),
+                // const FullScreenSlider(),
+                Image.network(
+                  imgUrl ??
+                      "https://images.unsplash.com/photo-1613405550625-e11c7d2221e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
+                  fit: BoxFit.fill,
+                  height: double.infinity,
+                ),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
@@ -36,7 +47,7 @@ class NewsDetails extends StatelessWidget {
                       horizontal: 30,
                       vertical: 20,
                     ),
-                    height: SizeConfig.blockSizeVertical! * 44,
+                    height: SizeConfig.blockSizeVertical! * 60,
                     width: double.infinity,
                     decoration: const BoxDecoration(
                       color: Colors.white,
@@ -49,7 +60,7 @@ class NewsDetails extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            "Unravel mysteries of the Maldives",
+                            title ?? "Unravel mysteries of the Maldives",
                             style: kPoppinsBold.copyWith(
                               fontSize: 28,
                             ),
@@ -78,7 +89,9 @@ class NewsDetails extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "Keanu Carpent May 17 • 8 min read",
+                                  author!.length > 20
+                                      ? "${author!.substring(0, 15)} $month.$day"
+                                      : "$author $month.$day",
                                   style: kPoppinsMedium.copyWith(color: KGrey),
                                 ),
                                 const SizedBox(
@@ -87,9 +100,12 @@ class NewsDetails extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const SizedBox(height: 20,),
+                          const SizedBox(
+                            height: 20,
+                          ),
                           Text(
-                            "On December 11,  Switzerland’s GoldenPass Express did not halt at Zweisimmen, where trains on the route usually stop to allow passengers to switch trains owing to the change in gauge. Thanks to its new design, the Express can now run on different gauges and adjust the height of its coaches to access different platforms.",
+                            content ??
+                                "On December 11,  Switzerland’s GoldenPass Express did not halt at Zweisimmen, where trains on the route usually stop to allow passengers to switch trains owing to the change in gauge. Thanks to its new design, the Express can now run on different gauges and adjust the height of its coaches to access different platforms.",
                             style: kPoppinsMedium.copyWith(fontSize: 16),
                           )
                         ],

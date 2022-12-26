@@ -13,21 +13,24 @@ class TopButtons extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Align(
-          alignment: Alignment.topLeft,
-          child: Container(
-            margin: const EdgeInsets.only(left: 20, top: 55),
-            padding: const EdgeInsets.only(left: 5),
-            height: 45,
-            width: 45,
-            decoration: BoxDecoration(
-              border: Border.all(color: kwhite, width: 1.5),
-              borderRadius: BorderRadius.circular(kBorderRadius),
-            ),
-            child: const Icon(
-              Icons.arrow_back_ios,
-              size: 18,
-              color: kwhite,
+        GestureDetector(
+          onTap: ()=>Navigator.pop(context),
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: Container(
+              margin: const EdgeInsets.only(left: 20, top: 55),
+              padding: const EdgeInsets.only(left: 5),
+              height: 45,
+              width: 45,
+              decoration: BoxDecoration(
+                border: Border.all(color: kwhite, width: 1.5),
+                borderRadius: BorderRadius.circular(kBorderRadius),
+              ),
+              child: const Icon(
+                Icons.arrow_back_ios,
+                size: 18,
+                color: kwhite,
+              ),
             ),
           ),
         ),

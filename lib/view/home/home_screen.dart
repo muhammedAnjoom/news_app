@@ -9,7 +9,7 @@ import 'short_news.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
-final NewsController newsController = Get.put(NewsController());
+  final NewsController newsController = Get.put(NewsController());
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -134,14 +134,26 @@ final NewsController newsController = Get.put(NewsController());
           kHeight30,
           SizedBox(
             height: 304,
-            child: Obx(() => ListView.builder(
+            child: Obx(() {
+              if (newsController.isLoading.value) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                return ListView.builder(
                   shrinkWrap: true,
                   itemCount: 10,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return NewsCard();
+                    final article = newsController.newsList[index];
+                    return NewsCard(
+                        news: article,
+                        author: article.author ??"Itachi Unchiha",
+                        );
                   },
-                )),
+                );
+              }
+            }),
           ),
           kHeight30,
           Row(
