@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:news_app/controller/news_controller.dart';
-import 'package:news_app/style/app_style.dart';
+import 'package:news_app/view/widgets/home.dart';
 
-
-import 'view/detalis/detalis_screen.dart';
-import 'view/home/home_screen.dart';
-import 'view/widgets/custom_bottom_bar.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,11 +21,7 @@ class MyApp extends StatelessWidget {
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: kLighterWhite,
-        body:  HomeScreen(),
-        bottomNavigationBar: const CustomBottomBar(),
-      ),
+      home: Home(),
       theme: ThemeData(primaryColor: Colors.blue),
     );
   }

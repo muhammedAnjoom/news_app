@@ -23,13 +23,13 @@ class TopButtons extends StatelessWidget {
               height: 45,
               width: 45,
               decoration: BoxDecoration(
-                border: Border.all(color: kwhite, width: 1.5),
+                border: Border.all(color: KDarkBlue, width: 1.5),
                 borderRadius: BorderRadius.circular(kBorderRadius),
               ),
               child: const Icon(
                 Icons.arrow_back_ios,
                 size: 18,
-                color: kwhite,
+                color: KDarkBlue,
               ),
             ),
           ),
@@ -42,12 +42,12 @@ class TopButtons extends StatelessWidget {
             height: 45,
             width: 45,
             decoration: BoxDecoration(
-              border: Border.all(color: kwhite, width: 1.5),
+              border: Border.all(color: KDarkBlue, width: 1.5),
               borderRadius: BorderRadius.circular(kBorderRadius),
             ),
             child: SvgPicture.asset(
               'assets/icons/bookmark.svg',
-              color: kwhite,
+              color: KDarkBlue,
             ),
           ),
         ),

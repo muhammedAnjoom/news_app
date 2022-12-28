@@ -37,8 +37,8 @@ class NewsDetails extends StatelessWidget {
                 Image.network(
                   imgUrl ??
                       "https://images.unsplash.com/photo-1613405550625-e11c7d2221e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
-                  fit: BoxFit.fill,
-                  height: double.infinity,
+                  fit: BoxFit.cover,
+                  height: double.maxFinite,
                 ),
                 Align(
                   alignment: Alignment.bottomCenter,
