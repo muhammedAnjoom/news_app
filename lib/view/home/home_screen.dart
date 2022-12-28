@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Monday,3 October",
+                    date,
                     style: kPoppinsRegular.copyWith(
                         fontSize: SizeConfig.blockSizeHorizontal! * 3.3,
                         color: KGrey),
