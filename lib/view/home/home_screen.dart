@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:news_app/style/size_config.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../controller/news_controller.dart';
@@ -13,6 +14,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    final date = DateFormat().add_MMMMEEEEd().format(DateTime.now());
+    print(date);
     return SafeArea(
       child: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -147,9 +150,9 @@ class HomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final article = newsController.newsList[index];
                     return NewsCard(
-                        news: article,
-                        author: article.author ??"Itachi Unchiha",
-                        );
+                      news: article,
+                      author: article.author ?? "Itachi Unchiha",
+                    );
                   },
                 );
               }
@@ -179,13 +182,26 @@ class HomeScreen extends StatelessWidget {
           ),
           SizedBox(
             height: 88,
-            child: ListView.builder(
-              itemCount: 10,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return const ShortNews();
-              },
-            ),
+            child: Obx(() {
+              if (newsController.isLoading.value) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                return ListView.builder(
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                     newsController.newsList.shuffle();
+                    final top10News = newsController.newsList[index];
+                    return ShortNews(
+                      imgUrl: top10News.urlToImage,
+                      title: top10News.title,
+                    );
+                  },
+                );
+              }
+            }),
           )
         ],
       ),

@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../../style/app_style.dart';
 import '../../style/size_config.dart';
+
 class ShortNews extends StatelessWidget {
   const ShortNews({
     super.key,
+    this.imgUrl,
+    this.title,
   });
-
+  final String? imgUrl;
+  final String? title;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,12 +38,11 @@ class ShortNews extends StatelessWidget {
               Container(
                 width: 70,
                 decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(kBorderRadius),
-                    image: const DecorationImage(
+                    borderRadius: BorderRadius.circular(kBorderRadius),
+                    image:  DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                            "https://images.pexels.com/photos/325193/pexels-photo-325193.jpeg"))),
+                           imgUrl ?? "https://images.pexels.com/photos/325193/pexels-photo-325193.jpeg"))),
               ),
               const Icon(
                 Icons.play_circle_outline_outlined,
@@ -54,12 +57,11 @@ class ShortNews extends StatelessWidget {
               child: Column(
             children: [
               Text(
-                "Top Trending islands in 2022",
+                title ??"Top Trending islands in 2022",
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: kPoppinsSemibold.copyWith(
-                    fontSize:
-                        SizeConfig.blockSizeHorizontal! * 3.4),
+                    fontSize: SizeConfig.blockSizeHorizontal! * 3.4),
               ),
               const SizedBox(
                 height: 5,
@@ -76,10 +78,9 @@ class ShortNews extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                    "40,999",
+                    "40,758",
                     style: kPoppinsMedium.copyWith(
-                        fontSize:
-                            SizeConfig.blockSizeHorizontal! * 3.3,
+                        fontSize: SizeConfig.blockSizeHorizontal! * 3.3,
                         color: KGrey),
                   )
                 ],
