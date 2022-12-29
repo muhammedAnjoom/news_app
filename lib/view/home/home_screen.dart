@@ -13,9 +13,12 @@ class HomeScreen extends StatelessWidget {
   final NewsController newsController = Get.put(NewsController());
   @override
   Widget build(BuildContext context) {
+    // default style
     SizeConfig().init(context);
-    final date = DateFormat().add_MMMMEEEEd().format(DateTime.now());
-    print(date);
+    // current date in eg: Wednesday, December 28
+    final date = DateFormat().add_MMMMEEEEd().format(
+          DateTime.now(),
+        );
     return SafeArea(
       child: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -192,7 +195,7 @@ class HomeScreen extends StatelessWidget {
                   itemCount: 10,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                     newsController.newsList.shuffle();
+                    newsController.newsList.shuffle();
                     final top10News = newsController.newsList[index];
                     return ShortNews(
                       imgUrl: top10News.urlToImage,

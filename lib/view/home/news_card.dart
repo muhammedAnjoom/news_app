@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:news_app/model/article_model.dart';
 import 'package:intl/intl.dart';
 import 'package:news_app/view/detalis/detalis_screen.dart';
