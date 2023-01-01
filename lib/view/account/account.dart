@@ -173,6 +173,61 @@ class AccountDetails extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              kHeight30,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Elly's Post",
+                    style: kPoppinsBold.copyWith(
+                        fontSize: SizeConfig.blockSizeHorizontal! * 4.5),
+                  ),
+                  Text(
+                    "View All",
+                    style: kPoppinsMedium.copyWith(
+                        color: KBlue,
+                        fontSize: SizeConfig.blockSizeHorizontal! * 3.2),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: SizeConfig.blockSizeHorizontal! * 2.5,
+              ),
+              SizedBox(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 2,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      height: 100,
+                      margin: EdgeInsets.only(
+                          bottom: SizeConfig.blockSizeVertical! * 2.5),
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 100,
+                            width: 100,
+                            padding: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(kBorderRadius),
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 24,
+                                  spreadRadius: 0,
+                                  offset: const Offset(0,3),
+                                  color: KDarkBlue.withOpacity(0.051)
+                                )
+                              ],
+                              
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                ),
               )
             ],
           ),
