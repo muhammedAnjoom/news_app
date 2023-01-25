@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_app/style/app_style.dart';
 import 'package:news_app/style/size_config.dart';
 
@@ -70,7 +71,7 @@ class AccountDetails extends StatelessWidget {
                           child: Center(
                             child: Text(
                               "Following",
-                              style: kPoppinsRegular.copyWith(
+                              style: kPoppinsRegular.copyWith(  
                                   color: kwhite,
                                   fontSize:
                                       SizeConfig.blockSizeHorizontal! * 3),
@@ -211,19 +212,131 @@ class AccountDetails extends StatelessWidget {
                             width: 100,
                             padding: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(kBorderRadius),
+                              color: kwhite,
+                              borderRadius:
+                                  BorderRadius.circular(kBorderRadius),
                               boxShadow: [
                                 BoxShadow(
-                                  blurRadius: 24,
-                                  spreadRadius: 0,
-                                  offset: const Offset(0,3),
-                                  color: KDarkBlue.withOpacity(0.051)
+                                    blurRadius: 24,
+                                    spreadRadius: 0,
+                                    offset: const Offset(0, 3),
+                                    color: KDarkBlue.withOpacity(0.051))
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius:
+                                  BorderRadius.circular(kBorderRadius),
+                              child: Image.network(
+                                "https://images.unsplash.com/photo-1519638399535-1b036603ac77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80",
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: SizeConfig.blockSizeVertical! * 2.5,
+                          ),
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "News: Polites",
+                                  style: kPoppinsRegular.copyWith(
+                                      fontSize:
+                                          SizeConfig.blockSizeHorizontal! * 3.5,
+                                      color: KGrey),
+                                ),
+                                Text(
+                                  "Iran's raging protests Fith Irain paramiliary me..",
+                                  style: kPoppinsBold.copyWith(
+                                      fontSize:
+                                          SizeConfig.blockSizeHorizontal! * 3.7,
+                                      color: KDarkBlue),
+                                ),
+                                const SizedBox(
+                                  height: 6,
+                                ),
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      "assets/icons/calendar.svg",
+                                      color: KGrey,
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "16th May",
+                                      style: kPoppinsRegular.copyWith(
+                                        fontSize:
+                                            SizeConfig.blockSizeHorizontal! *
+                                                3.3,
+                                        color: KGrey,
+                                      ),
+                                    ),
+                                    const Spacer(),
+                                    SvgPicture.asset(
+                                      "assets/icons/clock.svg",
+                                      color: KGrey,
+                                      width: 18,
+                                      height: 18,
+                                    ),
+                                    const SizedBox(
+                                      width: 8,
+                                    ),
+                                    Text(
+                                      "10:15 am",
+                                      style: kPoppinsRegular.copyWith(
+                                        fontSize:
+                                            SizeConfig.blockSizeHorizontal! *
+                                                3.3,
+                                        color: KGrey,
+                                      ),
+                                    )
+                                  ],
                                 )
                               ],
-                              
                             ),
                           )
                         ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(
+                height: SizeConfig.blockSizeVertical! * 2.5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Popular From Elly",
+                    style: kPoppinsBold.copyWith(
+                        fontSize: SizeConfig.blockSizeHorizontal! * 4.5),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: SizeConfig.blockSizeVertical! * 2.5,
+              ),
+              SizedBox(
+                height: 143,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      height: 143,
+                      width: 248,
+                      margin: EdgeInsets.only(
+                          right: SizeConfig.blockSizeHorizontal! * 2.5),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(kBorderRadius),
+                        child: Image.network(
+                          "https://images.unsplash.com/photo-1552378530-1c3caefe31db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     );
                   },

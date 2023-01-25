@@ -53,9 +53,10 @@ class NewsCard extends StatelessWidget {
               height: 164,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(kBorderRadius),
-                image: DecorationImage(
+                image:  DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(news.urlToImage ??
+                  image: NetworkImage(
+                    news.urlToImage ??
                       'https://i.pinimg.com/originals/37/66/03/3766030538e87b789a4de14e0c796083.png'),
                 ),
               ),
@@ -66,7 +67,6 @@ class NewsCard extends StatelessWidget {
           ),
           Flexible(
             child: Text(
-              news.title ??
                   "Inside the first China-Switzerland Stock Connect GDR deals",
               style: kPoppinsBold.copyWith(
                   fontSize: SizeConfig.blockSizeHorizontal! * 3.5),
