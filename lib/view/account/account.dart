@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:news_app/style/app_style.dart';
 import 'package:news_app/style/size_config.dart';
+
+import '../../controller/news_controller.dart';
 
 class AccountDetails extends StatelessWidget {
   const AccountDetails({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final NewsController newsController = Get.put(NewsController());
     SizeConfig().init(context);
     return Scaffold(
       backgroundColor: kLighterWhite,
@@ -71,7 +75,7 @@ class AccountDetails extends StatelessWidget {
                           child: Center(
                             child: Text(
                               "Following",
-                              style: kPoppinsRegular.copyWith(  
+                              style: kPoppinsRegular.copyWith(
                                   color: kwhite,
                                   fontSize:
                                       SizeConfig.blockSizeHorizontal! * 3),
@@ -323,24 +327,35 @@ class AccountDetails extends StatelessWidget {
               ),
               SizedBox(
                 height: 143,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      height: 143,
-                      width: 248,
-                      margin: EdgeInsets.only(
-                          right: SizeConfig.blockSizeHorizontal! * 2.5),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(kBorderRadius),
-                        child: Image.network(
-                          "https://images.unsplash.com/photo-1552378530-1c3caefe31db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                child: Obx(() {
+                  if (newsController.isLoading.value) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
                     );
-                  },
-                ),
+                  } else {
+                    return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        final news = newsController.newsList[index];
+                        final imageUrl = news.urlToImage;
+                        return Container(
+                          height: 143,
+                          width: 248,
+                          margin: EdgeInsets.only(
+                              right: SizeConfig.blockSizeHorizontal! * 2.5),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(kBorderRadius),
+                            child: Image.network(
+                              imageUrl ??
+                                  "https://images.unsplash.com/photo-1552378530-1c3caefe31db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  }
+                }),
               )
             ],
           ),
