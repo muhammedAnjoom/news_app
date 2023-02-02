@@ -14,7 +14,7 @@ class TopButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         GestureDetector(
-          onTap: ()=>Navigator.pop(context),
+          onTap: () => Navigator.pop(context),
           child: Align(
             alignment: Alignment.topLeft,
             child: Container(
@@ -24,7 +24,6 @@ class TopButtons extends StatelessWidget {
               width: 45,
               decoration: BoxDecoration(
                 color: kwhite,
-                border: Border.all(color: KDarkBlue, width: 1.5),
                 borderRadius: BorderRadius.circular(kBorderRadius),
               ),
               child: const Icon(
@@ -44,7 +43,6 @@ class TopButtons extends StatelessWidget {
             width: 45,
             decoration: BoxDecoration(
               color: kwhite,
-              border: Border.all(color: KDarkBlue, width: 1.5),
               borderRadius: BorderRadius.circular(kBorderRadius),
             ),
             child: SvgPicture.asset(
