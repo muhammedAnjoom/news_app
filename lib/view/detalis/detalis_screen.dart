@@ -10,16 +10,16 @@ class NewsDetails extends StatelessWidget {
       this.title,
       this.author,
       this.content,
-      this.month,
-      this.day})
+     required this.month,
+     required this.day})
       : super(key: key);
 
   final String? imgUrl;
   final String? title;
   final String? author;
   final String? content;
-  final String? month;
-  final String? day;
+  final String month;
+  final String day;
 
   @override
   Widget build(BuildContext context) {

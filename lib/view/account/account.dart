@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:news_app/style/app_style.dart';
 import 'package:news_app/style/size_config.dart';
 
 import '../../controller/news_controller.dart';
+import '../detalis/detalis_screen.dart';
 
 class AccountDetails extends StatelessWidget {
   const AccountDetails({Key? key}) : super(key: key);
@@ -338,17 +340,41 @@ class AccountDetails extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final news = newsController.newsList[index];
                         final imageUrl = news.urlToImage;
-                        return Container(
-                          height: 143,
-                          width: 248,
-                          margin: EdgeInsets.only(
-                              right: SizeConfig.blockSizeHorizontal! * 2.5),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(kBorderRadius),
-                            child: Image.network(
-                              imageUrl ??
-                                  "https://images.unsplash.com/photo-1552378530-1c3caefe31db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-                              fit: BoxFit.cover,
+                        var date = news.publishedAt!.split('T');
+                        // date split in year,month,day
+                        var dateSplit = date[0].split('-');
+                        // Convert Integer To Month 1=> jan
+                        var month = DateFormat('MMM')
+                            .format(DateTime(0, int.parse(dateSplit[1])));
+                            print(month);
+                            print(dateSplit[2]);
+                        return GestureDetector(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (ctx) => NewsDetails(
+                                author: news.author,
+                                content: news.content,
+                                imgUrl: news.urlToImage,
+                                title: news.title,
+                                month: month,
+                                day: dateSplit[2],
+                              ),
+                            ),
+                          ),
+                          child: Container(
+                            height: 143,
+                            width: 248,
+                            margin: EdgeInsets.only(
+                                right: SizeConfig.blockSizeHorizontal! * 2.5),
+                            child: ClipRRect(
+                              borderRadius:
+                                  BorderRadius.circular(kBorderRadius),
+                              child: Image.network(
+                                imageUrl ??
+                                    "https://images.unsplash.com/photo-1552378530-1c3caefe31db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         );

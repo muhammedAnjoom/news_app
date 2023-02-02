@@ -23,6 +23,7 @@ class TopButtons extends StatelessWidget {
               height: 45,
               width: 45,
               decoration: BoxDecoration(
+                color: kwhite,
                 border: Border.all(color: KDarkBlue, width: 1.5),
                 borderRadius: BorderRadius.circular(kBorderRadius),
               ),
@@ -42,6 +43,7 @@ class TopButtons extends StatelessWidget {
             height: 45,
             width: 45,
             decoration: BoxDecoration(
+              color: kwhite,
               border: Border.all(color: KDarkBlue, width: 1.5),
               borderRadius: BorderRadius.circular(kBorderRadius),
             ),
