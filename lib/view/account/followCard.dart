@@ -43,7 +43,7 @@ class FollowCard extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "2.11k",
+                "2.1",
                 style: kPoppinsBold.copyWith(
                     color: kwhite,
                     fontSize: SizeConfig.blockSizeHorizontal! * 4),
