@@ -25,13 +25,15 @@ class PostWidget extends StatelessWidget {
           final news = controller.newsList[index];
           // pusblished Date 2023-02-05T01:42:00Z formate
           var date = news.publishedAt!.split('T');
+          // splite T 2023-02-05 one part 01:42:00Z second
           var time = date[1].split('Z');
+          // splite z 01:42:00 one part Z second
           final stringtime = DateFormat.jm().format(
             DateFormat("hh:mm").parse(
               time[0],
             ),
           );
-          print(stringtime);
+          // covert 17:00:08 to 5:00 PM
           // date split in year,month,day
           var dateSplit = date[0].split('-');
           // Convert Integer To Month 1=> jan
