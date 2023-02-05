@@ -23,7 +23,15 @@ class PostWidget extends StatelessWidget {
         itemCount: 2,
         itemBuilder: (context, index) {
           final news = controller.newsList[index];
+          // pusblished Date 2023-02-05T01:42:00Z formate
           var date = news.publishedAt!.split('T');
+          var time = date[1].split('Z');
+          final stringtime = DateFormat.jm().format(
+            DateFormat("hh:mm").parse(
+              time[0],
+            ),
+          );
+          print(stringtime);
           // date split in year,month,day
           var dateSplit = date[0].split('-');
           // Convert Integer To Month 1=> jan
@@ -113,7 +121,7 @@ class PostWidget extends StatelessWidget {
                             width: 8,
                           ),
                           Text(
-                            "10:15 am",
+                            stringtime,
                             style: kPoppinsRegular.copyWith(
                               fontSize: SizeConfig.blockSizeHorizontal! * 3.3,
                               color: KGrey,
