@@ -1,16 +1,14 @@
 # news_app
 
-A new Flutter project.
+the app using getx state mangement.
+A flutter app. using news api.
 
-## Getting Started
+## Screen recorder
+https://user-images.githubusercontent.com/66232929/217566258-1289c196-3bd0-4c84-8b11-6699e2bebca8.mp4
 
-This project is a starting point for a Flutter application.
+## Building
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-Install Flutter
+- `flutter pub get`
+- `flutter run`
+.

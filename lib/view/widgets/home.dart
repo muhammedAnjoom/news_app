@@ -5,8 +5,6 @@ import 'package:news_app/view/home/home_screen.dart';
 import 'package:news_app/view/widgets/custom_bottom_bar.dart';
 
 import '../account/account.dart';
-import '../bookMark/book_mark.dart';
-import '../notflication/notflication.dart';
 
 // ignore: must_be_immutable
 class Home extends StatelessWidget {
@@ -17,8 +15,6 @@ class Home extends StatelessWidget {
   // different screens
   final screens = [
     HomeScreen(),
-    const SaveNewsScreen(),
-    const NotflicationScreen(),
     const AccountDetails()
   ];
 

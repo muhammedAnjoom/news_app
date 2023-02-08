@@ -32,18 +32,6 @@ class CustomBottomBar extends StatelessWidget {
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: selectedIndex == 1
-              ? SvgPicture.asset('assets/icons/bookmark.svg')
-              : SvgPicture.asset('assets/icons/bookmark_un.svg'),
-          label: '',
-        ),
-        BottomNavigationBarItem(
-          icon: selectedIndex == 2
-              ? SvgPicture.asset('assets/icons/notification.svg')
-              : SvgPicture.asset('assets/icons/notification_un.svg'),
-          label: '',
-        ),
-        BottomNavigationBarItem(
           icon: selectedIndex == 3
               ? SvgPicture.asset(
                   'assets/icons/user.svg',
